@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.3.0
+Build-Jdk-Spec: 17
+Specification-Title: Test App Spec
+Specification-Version: 1.3
+Specification-Vendor: Bernardo Martínez Garrido
+Implementation-Title: Test App Impl
+Implementation-Version: 1.0.0
+Implementation-Vendor: Bernardo Martínez Garrido
+Package: com.bernardomg.test
+name: com/bernardomg/bernardomg/test
+url: https://github.com/bernardo-mg/picocli-manifest-version-provider
+

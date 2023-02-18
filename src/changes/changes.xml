@@ -6,11 +6,9 @@
    </properties>
    <body>
       <release version="1.0.0" date="2023-02-18" description="First release">
-         <action dev="bmg" type="update">
+         <action dev="bmg" type="add">
             First version.
          </action>
-      </release>
-      <release version="1.1.0" date="2023-02-18" description="">
       </release>
    </body>
 </document>

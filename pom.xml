@@ -23,7 +23,7 @@
    <packaging>jar</packaging>
 
    <name>picocli Manifest Version Provider</name>
-   <description>Provider the version for picocli by reading the manifest file</description>
+   <description>Provides the version for picocli by reading the manifest file</description>
    <url>https://github.com/bernardo-mg/picocli-manifest-version-provider</url>
    <inceptionYear>2023</inceptionYear>
 

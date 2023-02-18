@@ -112,8 +112,11 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
         // Check if the version was found
         // If so, it will be returned
         if (version.isPresent()) {
+            log.debug("Found version data");
+            log.debug("Version: {}", version.get());
             result = new String[] { version.get() };
         } else {
+            log.debug("Found no version data");
             result = new String[0];
         }
 
@@ -130,6 +133,8 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
     private final Optional<Manifest> getManifest(final URL url) {
         final Manifest     manifest;
         Optional<Manifest> result;
+        
+        log.debug("Reading manifest from {}", url);
 
         try {
             manifest = new Manifest(url.openStream());

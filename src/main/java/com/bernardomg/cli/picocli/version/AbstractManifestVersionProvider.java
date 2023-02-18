@@ -25,7 +25,6 @@ import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
 import lombok.extern.slf4j.Slf4j;
-import picocli.CommandLine;
 import picocli.CommandLine.IVersionProvider;
 
 /**
@@ -77,7 +76,8 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
         Optional<String>       version;
 
         // Acquire URL to manifest file
-        resources = CommandLine.class.getClassLoader()
+        resources = Thread.currentThread()
+            .getContextClassLoader()
             .getResources(MANIFEST_PATH);
 
         // Searches for version

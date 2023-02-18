@@ -10,6 +10,7 @@ jobs:
     uses: Bernardo-MG/github-workflow-maven/.github/workflows/deploy_github.yml@v1
     permissions:
       packages: write
+      contents: read
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
 

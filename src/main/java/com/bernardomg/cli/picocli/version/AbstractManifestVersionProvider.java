@@ -69,6 +69,15 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
         project = Objects.requireNonNull(prj);
     }
 
+    /**
+     * Returns the project title. Used to identify the correct manifest.
+     *
+     * @return the project title for finding the version
+     */
+    public final String getProject() {
+        return project;
+    }
+
     @Override
     public final String[] getVersion() throws Exception {
         final Enumeration<URL> resources;

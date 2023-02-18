@@ -18,7 +18,7 @@
 
    <Loggers>
       <!-- Application log -->
-      <Logger name="com.bernardomg" level="error" additivity="false">
+      <Logger name="com.bernardomg.cli" level="error" additivity="false">
          <AppenderRef ref="file" />
       </Logger>
 

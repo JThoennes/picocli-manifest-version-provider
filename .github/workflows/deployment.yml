@@ -8,6 +8,8 @@ jobs:
   github:
     name: Github
     uses: Bernardo-MG/github-workflow-maven/.github/workflows/deploy_github.yml@v1
+    permissions:
+      packages: write
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
 

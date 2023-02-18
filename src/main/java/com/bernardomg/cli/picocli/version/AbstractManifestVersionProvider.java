@@ -152,14 +152,13 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
         version = new StringBuilder();
 
         // Adds implementation title
-        version.append(attr.get(KEY_TITLE));
-        version.append(" ");
+        version.append(attr.get(KEY_TITLE))
+            .append(' ');
 
         // Adds implementation version if it exists
         if (attr.containsKey(KEY_VERSION)) {
-            version.append("version");
-            version.append(" ");
-            version.append(attr.get(KEY_VERSION));
+            version.append("version ")
+                .append(attr.get(KEY_VERSION));
         }
 
         return version.toString();

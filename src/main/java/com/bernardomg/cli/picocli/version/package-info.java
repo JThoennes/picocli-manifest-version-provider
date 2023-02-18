@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Components for acquiring the version.
+ * Version provider.
  */
 
 package com.bernardomg.cli.picocli.version;

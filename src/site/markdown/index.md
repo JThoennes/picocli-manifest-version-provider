@@ -1,23 +1,17 @@
-# Dice Notation Tools for Java CLI
+# picocli Manifest Version Provider
 
-CLI for running the [Dice Notation Tools][dice-notation-tools] through line command.
+Manifest provider for picocli which takes the info from the packaged manifest.
 
-To run the project first package it:
-
-```
-mvn clean package
-```
-
-Afterwards a runnable jar will be in the target folder. It can be run like this:
+To use build your own provider by extending AbstractManifestVersionProvider:
 
 ```
-java -jar target/dice.jar roll 1d6
+public class MyVersionProvider extends AbstractManifestVersionProvider {
+
+    public MyVersionProvider() {
+        super("Project implementation name");
+    }
+
+}
 ```
 
-To show other commands:
-
-```
-java -jar target/dice.jar -h
-```
-
-[dice-notation-tools]: https://github.com/Bernardo-MG/dice-notation-java
+All it requires is the project implementation name as it appears on the manifest. Usually this is the Maven project name.

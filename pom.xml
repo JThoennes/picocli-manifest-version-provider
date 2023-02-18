@@ -177,10 +177,10 @@
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
       <junit.jupiter.version>5.9.2</junit.jupiter.version>
+      <log4j.version>2.19.0</log4j.version>
       <lombok.version>1.18.26</lombok.version>
       <mockito.version>5.1.1</mockito.version>
       <picocli.version>4.7.1</picocli.version>
-      <log4j.version>2.19.0</log4j.version>
       <slf4j.version>2.0.6</slf4j.version>
       <!-- ============================================== -->
       <!-- ============ PLUGIN CONFIGURATION ============ -->

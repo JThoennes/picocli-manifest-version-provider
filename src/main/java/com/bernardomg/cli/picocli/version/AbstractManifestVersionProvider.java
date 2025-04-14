@@ -1,5 +1,5 @@
 /**
- * Copyright 2020-2023 the original author or authors
+ * Copyright 2023-2025 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -24,7 +24,9 @@ import java.util.Optional;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import picocli.CommandLine.IVersionProvider;
 
 /**
@@ -34,7 +36,6 @@ import picocli.CommandLine.IVersionProvider;
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@Slf4j
 public abstract class AbstractManifestVersionProvider implements IVersionProvider {
 
     /**
@@ -46,6 +47,11 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
      * Manifest implementation vesion key.
      */
     private static final Attributes.Name KEY_VERSION   = new Attributes.Name("Implementation-Version");
+
+    /**
+     * Logger for the class.
+     */
+    private static final Logger          log           = LoggerFactory.getLogger(AbstractManifestVersionProvider.class);
 
     /**
      * Path to the manifest file.
@@ -91,7 +97,7 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
 
         // Searches for version
         version = Optional.empty();
-        while ((!version.isPresent()) && (resources.hasMoreElements())) {
+        while ((version.isEmpty()) && (resources.hasMoreElements())) {
             final Optional<Manifest> manifest;
             final Attributes         attr;
 
@@ -130,10 +136,10 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
      *            URL to the manifest file
      * @return the manifest structure
      */
-    private final Optional<Manifest> getManifest(final URL url) {
+    private Optional<Manifest> getManifest(final URL url) {
         final Manifest     manifest;
         Optional<Manifest> result;
-        
+
         log.debug("Reading manifest from {}", url);
 
         try {
@@ -160,7 +166,7 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
      *            attributes with the version
      * @return the implementation version
      */
-    private final String getVersion(final Attributes attr) {
+    private String getVersion(final Attributes attr) {
         final StringBuilder version;
 
         version = new StringBuilder();
@@ -185,10 +191,10 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
      *            manifest to check
      * @return {@code true} if it is the expected manifest, {@code false} in other case
      */
-    private final Boolean isValid(final Manifest manifest) {
+    private boolean isValid(final Manifest manifest) {
         final Attributes attributes;
         final Object     title;
-        final Boolean    valid;
+        final boolean    valid;
 
         attributes = manifest.getMainAttributes();
 

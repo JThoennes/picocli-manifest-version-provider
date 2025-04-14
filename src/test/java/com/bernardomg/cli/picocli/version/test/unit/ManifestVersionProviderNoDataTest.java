@@ -1,11 +1,11 @@
 
-package com.bernardomg.cli.picocli.version.test.util;
+package com.bernardomg.cli.picocli.version.test.unit;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.bernardomg.cli.picocli.version.test.unit.TestManifestVersionProvider;
+import com.bernardomg.cli.picocli.version.test.util.TestManifestVersionProvider;
 
 import picocli.CommandLine.IVersionProvider;
 

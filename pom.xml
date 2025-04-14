@@ -10,7 +10,7 @@
    <parent>
       <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.5.3</version>
+      <version>1.5.9</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -19,7 +19,7 @@
 
    <groupId>com.bernardomg.cli</groupId>
    <artifactId>picocli-manifest-version-provider</artifactId>
-   <version>1.0.0</version>
+   <version>1.0.1</version>
    <packaging>jar</packaging>
 
    <name>picocli Manifest Version Provider</name>
@@ -162,6 +162,14 @@
          <timezone>+1</timezone>
          <properties />
       </developer>
+      <developer>
+         <id>JThoennes</id>
+         <name>Jörg Thönnes</name>
+         <url>https://github.com/JThoennes</url>
+         <roles>
+            <role>Developer</role>
+         </roles>
+      </developer>
    </developers>
 
    <!-- ********************************************** -->
@@ -176,12 +184,11 @@
       <!-- ============================================== -->
       <!-- =========== DEPENDENCIES VERSIONS ============ -->
       <!-- ============================================== -->
-      <junit.jupiter.version>5.9.2</junit.jupiter.version>
-      <lombok.version>1.18.26</lombok.version>
-      <mockito.version>5.1.1</mockito.version>
-      <picocli.version>4.7.1</picocli.version>
-      <log4j.version>2.19.0</log4j.version>
-      <slf4j.version>2.0.6</slf4j.version>
+      <junit.jupiter.version>5.12.2</junit.jupiter.version>
+      <log4j.version>2.24.3</log4j.version>
+      <mockito.version>5.17.0</mockito.version>
+      <picocli.version>4.7.6</picocli.version>
+      <slf4j.version>2.0.17</slf4j.version>
       <!-- ============================================== -->
       <!-- ============ PLUGIN CONFIGURATION ============ -->
       <!-- ============================================== -->
@@ -190,10 +197,11 @@
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>2.3.1</site.skin.version>
+      <site.skin.version>2.3.3</site.skin.version>
       <githubArtifactURL>
          <![CDATA[https://github.com/Bernardo-MG?tab=packages&amp;repo_name=picocli-manifest-version-provider]]>
       </githubArtifactURL>
+      <maven.compiler.release>${maven.compiler.source}</maven.compiler.release>
    </properties>
 
    <!-- ********************************************** -->
@@ -219,16 +227,6 @@
          <groupId>info.picocli</groupId>
          <artifactId>picocli</artifactId>
          <version>${picocli.version}</version>
-      </dependency>
-      <!-- ============================================== -->
-      <!-- ================== LOMBOK ==================== -->
-      <!-- ============================================== -->
-      <dependency>
-         <!-- Lombok -->
-         <groupId>org.projectlombok</groupId>
-         <artifactId>lombok</artifactId>
-         <version>${lombok.version}</version>
-         <scope>provided</scope>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== LOGGERS =================== -->
@@ -284,6 +282,58 @@
    <build>
       <defaultGoal>clean package</defaultGoal>
       <plugins>
+         <plugin>
+            <!-- Dependency -->
+            <!-- Copies the dependencies to the module path directory -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+               <execution>
+                  <id>copy-dependencies</id>
+                  <phase>generate-resources</phase>
+                  <goals>
+                     <goal>copy-dependencies</goal>
+                  </goals>
+                  <configuration>
+                     <outputDirectory>${project.build.directory}/modules</outputDirectory>
+                     <includeScope>runtime</includeScope>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+         <plugin>
+            <!-- Compiler -->
+            <!-- Configures the compiler -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <!-- Configure the module path directory -->
+               <compilerArgs>
+                  <arg>-proc:none</arg>
+                  <arg>--module-path</arg>
+                  <arg>${project.build.directory}/modules</arg>
+               </compilerArgs>
+            </configuration>
+            <executions>
+               <!-- Configure test compilation for modules -->
+               <execution>
+                  <id>default-testCompile</id>
+                  <phase>test-compile</phase>
+                  <goals>
+                     <goal>testCompile</goal>
+                  </goals>
+                  <configuration>
+                     <compilerArgs>
+                        <arg>-proc:none</arg>
+                        <arg>--module-path</arg>
+                        <arg>${project.build.directory}/modules${path.separator}${project.build.directory}/classes</arg>
+                     </compilerArgs>
+                  </configuration>
+               </execution>
+
+            </executions>
+
+         </plugin>
          <plugin>
             <!-- Changes -->
             <!-- Takes care of the changes log -->

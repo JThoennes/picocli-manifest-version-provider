@@ -1,5 +1,5 @@
 
-package com.bernardomg.cli.picocli.version.test.unit;
+package com.bernardomg.cli.picocli.version.test.util;
 
 import com.bernardomg.cli.picocli.version.AbstractManifestVersionProvider;
 

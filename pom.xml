@@ -19,7 +19,7 @@
 
    <groupId>com.bernardomg.cli</groupId>
    <artifactId>picocli-manifest-version-provider</artifactId>
-   <version>1.0.0</version>
+   <version>1.0.1</version>
    <packaging>jar</packaging>
 
    <name>picocli Manifest Version Provider</name>

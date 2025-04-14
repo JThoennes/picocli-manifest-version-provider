@@ -10,5 +10,13 @@
             First version.
          </action>
       </release>
+      <release version="1.0.1" date="2025-04-14" description="Modularity">
+         <action dev="JThoennes" type="add">
+            Java modularity.
+         </action>
+         <action dev="bmg" type="patch">
+            Updated dependencies.
+         </action>
+      </release>
    </body>
 </document>

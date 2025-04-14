@@ -26,6 +26,7 @@ import java.util.jar.Manifest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import picocli.CommandLine.IVersionProvider;
 
 /**
@@ -38,11 +39,6 @@ import picocli.CommandLine.IVersionProvider;
 public abstract class AbstractManifestVersionProvider implements IVersionProvider {
 
     /**
-     * Logger for the class.
-     */
-    private static final Logger log = LoggerFactory.getLogger(AbstractManifestVersionProvider.class);
-
-    /**
      * Manifest implementation title key.
      */
     private static final Attributes.Name KEY_TITLE     = new Attributes.Name("Implementation-Title");
@@ -51,6 +47,11 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
      * Manifest implementation vesion key.
      */
     private static final Attributes.Name KEY_VERSION   = new Attributes.Name("Implementation-Version");
+
+    /**
+     * Logger for the class.
+     */
+    private static final Logger          log           = LoggerFactory.getLogger(AbstractManifestVersionProvider.class);
 
     /**
      * Path to the manifest file.
@@ -193,7 +194,7 @@ public abstract class AbstractManifestVersionProvider implements IVersionProvide
     private boolean isValid(final Manifest manifest) {
         final Attributes attributes;
         final Object     title;
-        final boolean valid;
+        final boolean    valid;
 
         attributes = manifest.getMainAttributes();
 

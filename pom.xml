@@ -162,6 +162,14 @@
          <timezone>+1</timezone>
          <properties />
       </developer>
+      <developer>
+         <id>JThoennes</id>
+         <name>Jörg Thönnes</name>
+         <url>https://github.com/JThoennes</url>
+         <roles>
+            <role>Developer</role>
+         </roles>
+      </developer>
    </developers>
 
    <!-- ********************************************** -->
